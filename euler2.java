@@ -10,10 +10,10 @@ public class euler2
 		for(int i=0;i<t;i++)
 		{
 			long n=read.nextLong();
-			int f0=2;
-			int f1=8;
-			int f2=0;
-			int sum=f0;
+			long f0=2;
+			long f1=8;
+			long f2=0;
+			long sum=f0;
 			while(f1<n)
 			{
 				sum+=f1;
