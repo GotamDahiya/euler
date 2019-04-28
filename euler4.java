@@ -4,47 +4,44 @@ import java.lang.*;
 
 public class euler4
 {
-	static long pallindrome(long a)
+	int add(String s)
 	{
-		long sum=0;
-		while(a!=0)
+		int l=s.length();
+		for(int i=0;i<l/2;i++)
 		{
-			sum+=a%10;
-			a/=10;
+			if(s.charAt(i)!=s.charAt(l-i-1)) return 0;
 		}
-		return sum;
+		return 1;
 	}
 	public static void main(String[] args) 
 	{
 		Scanner read=new Scanner(System.in);
 		euler4 run=new euler4();
+		int[] a=new int[1000001];
+		for(int i=100;i<=1000;i++)
+		{
+			for(int j=100;j<1000;j++)
+			{
+				int p=i*j;
+				if(p>=101101)
+				{
+					int v=run.add(""+p);
+					if(v==1)a[p]=1;
+				}
+			}
+		}
 		int t=read.nextInt();
 		while(t-->0)
 		{
-			long n=read.nextLong();
-			long a=0,b=0;
-			for(int i=100;i<1000;i++)
+			int n=read.nextInt();
+			for(int i=n-1;i>=101101;i--)
 			{
-				for(int j=i;j<1000;j++)
+				if(a[i]==1)
 				{
-					if(i*j<=n)
-					{
-						a=i*j;
-						b=a;
-						long sum=0;
-						while(b!=0)
-						{
-							sum+=b%10;
-							b/=10;
-						}
-						if(a==sum)
-						{
-							System.out.println(a);
-							break;
-						}
-					}
+					System.out.println(i);
+					break;
 				}
 			}
-		}	
+		}
 	}
 }
